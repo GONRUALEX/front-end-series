@@ -1,0 +1,28 @@
+<div *ngIf="!isLogged;else logged" class="botonera">
+    <button (click)="iniciarSesion()">Iniciar sesión</button>
+    <button (click)="registrarse()">Registrarse</button>
+</div>
+<ng-template #logged>
+    <div class="else">
+    <div class="bienvenida">Hola {{nombreUsuario}}</div>
+    <div><button (click)="cerrarSesion()">CerrarSesion</button></div>
+    </div>
+</ng-template>
+<ng-container *ngIf="verFormulario">
+    <div class="form">
+        <form [formGroup]="formGroup">
+            <label for="nombre">Nombre</label>
+            <input name="nombre" formControlName="nombre" type="text" />
+            <label for="apellido">Apellido</label>
+            <input name="apellido" formControlName="apellido" type="text" />
+            <button *ngIf="iniciaSesion" (click)="enviarLogin()" [disabled]="formGroup.invalid">Iniciar sesión</button>
+            <button *ngIf="registra" (click)="registro()" [disabled]="formGroup.invalid">Registrate</button>
+        </form>
+    </div>
+    <div class="avisos"> <span class="aviso" *ngIf="getError('nombre')">Error en el nombre : *{{
+            getError('nombre')}}</span>
+        <span class="aviso" *ngIf="getError('apellido')">Error en el apellido : *{{ getError('apellido')}}</span>
+    </div>
+    <div class="avisos" *ngIf="errorInSesion"><img width="150px" src="/assets/erroriniciosesion.jpg" /><span
+            class="aviso">Error al iniciar sesión, prueba otra vez</span></div>
+</ng-container>

@@ -1,1 +1,131 @@
-/* You can add global styles to this file, and also import other style files */
+//colors
+$alpinia-background-blue:#1b609b;
+$alpinia-background-blue-white:#cee1f4;
+$alpinia-color-white:#cee1f4;
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    .avisos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        & .aviso {
+            color: red;
+        }
+    }
+    
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        color: $alpinia-background-blue;
+        font-size: 30px;
+    }
+
+    .page-header div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .page-menubar {
+        background-color: $alpinia-background-blue-white;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        nav {
+            height: 100%;
+        }
+
+        ul {
+            display: flex;
+            order: 1;
+            list-style: none;
+        }
+    }
+
+    .page-footer {
+        background-color: $alpinia-background-blue;
+        display: flex;
+        flex-direction: column-reverse;
+        color: $alpinia-color-white;
+    }
+
+    .page-footer ul {
+        display: flex;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+    input,select {
+        margin: 10px;
+        border: 1px solid $alpinia-background-blue;
+        border-radius: 2px;
+        background-color: $alpinia-background-blue-white;
+        color: $alpinia-background-blue;
+
+        font-size: 1rem;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset,
+            0 1px 3px rgba(0, 0, 0, .2);
+
+    }
+
+    label {
+        color: $alpinia-background-blue;
+        font-size: 1rem;
+    }
+
+    button {
+        margin: 10px;
+        border: 1px solid $alpinia-background-blue;
+        border-radius: 4px;
+        background-color: $alpinia-background-blue-white;
+        color: #fff;
+
+        font-size: 1rem;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset,
+            0 1px 3px rgba(0, 0, 0, .2);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, $alpinia-background-blue), to($alpinia-background-blue-white));
+        background-image: linear-gradient($alpinia-background-blue 10%, $alpinia-background-blue-white 100%);
+
+        &:hover,
+        &:focus {
+            background-color: #e0811b;
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #f0a100), to(#f70));
+            background-image: linear-gradient(#f0a100 10%, #f70 100%);
+        }
+
+        &:active {
+            background-color: #cf6a00;
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2) inset;
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #f0a100), to(#f70));
+            background-image: linear-gradient(#f0a100 10%, #f70 100%);
+        }
+    }
+
+    @media screen and (min-width: 550px) {
+        .page-menubar ul {
+            width: auto;
+            margin-top: 0;
+        }
+
+        .page-footer {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

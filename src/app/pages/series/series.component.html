@@ -1,0 +1,52 @@
+<ng-container *ngIf="!isLogged;else series">
+    <img width="100%" src="assets/inciasesion.jpg" />
+</ng-container>
+<ng-template #series>
+    <ng-container *ngIf="!anadirForm;else anadirForms">
+        <div class="container">
+            <div class="one titulo">
+                Carátula
+            </div>
+            <div class="two titulo">
+                Nombre
+            </div>
+            <div class="three titulo">
+                Plataforma
+            </div>
+            <div class="four titulo">
+               Sinopsis
+            </div>
+            <div class="five titulo">
+               Valoración
+            </div>
+        </div>
+        <app-serie [serie]="serie" *ngFor="let serie of seriesList"></app-serie>
+        <div class="button">
+            <button (click)="anadirSerie()">Añadir serie</button>
+        </div>
+    </ng-container>
+    <ng-template #anadirForms>
+        <div class="formGroup">
+            <form [formGroup]="formGroupSerie">
+                <label for="caratula">Caratula</label>
+                <input name="caratula" formControlName="caratula" type="text" />
+                <label for="nombre">Nombre</label>
+                <input name="nombre" formControlName="nombre" type="text" />
+                <label for="sinopsis">Sinopsis</label>
+                <input name="sinopsis" formControlName="sinopsis" type="text" />
+                <label for="plataforma">Plataforma</label>
+                <select name="plataforma" [(ngModel)]="seleccionado" formControlName="plataforma">
+                    <option [value]="item.description"  *ngFor="let item of plataformaItems; let i = index">{{item.description}}</option>
+                </select>
+                <button (click)="crearSerie()" *ngIf="!formGroupSerie.invalid" [disabled]="formGroupSerie.invalid">Añadir</button>
+                <button (click)="atras()" >Atrás</button>
+            </form>
+        </div>
+        <div class="avisos"> <span class="aviso" *ngIf="getError('nombre')">Error en el nombre : *{{
+            getError('nombre')}}</span>
+        <span class="aviso" *ngIf="getError('caratula')">Error en la caratula : *{{ getError('caratula')}}</span>
+        <span class="aviso" *ngIf="getError('sinopsis')">Error en lasinopsis : *{{ getError('sinopsis')}}</span>
+        <span class="aviso" *ngIf="getError('plataforma')">Error en la plataforma : *{{ getError('plataforma')}}</span>
+    </div>
+    </ng-template>
+</ng-template>

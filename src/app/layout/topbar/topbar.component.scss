@@ -1,0 +1,26 @@
+nav{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    a{
+        text-decoration: none;
+        margin: 10px;
+        padding: 5px;   
+        border: 1px solid rgb(255, 255, 255);
+        color:rgb(62, 107, 131);
+
+        &:hover{
+            background-color:white;
+            color:rgb(68, 120, 179);
+            border: 1px solid rgb(35, 112, 188);
+        }
+    }
+
+    .active{
+        background-color:whitesmoke;
+        border-radius:2px;
+        color:rgb(62, 107, 131);
+    }
+}
